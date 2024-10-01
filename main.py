@@ -32,4 +32,35 @@ print(cookies) # Dict keys become indices of the Series
 print("Rating of dirt cookies: ", cookies['dirt'])
 
 
+# DataFrame is like a 2D array or specialized dictionary
+cookies_df = pd.DataFrame(cookies, columns=['rating'])
+print(cookies_df)
+
+# Add a column to our DataFrame
+cookies_df['allergens'] = [True, True, True, True, False]
+print(cookies_df)
+
+# Another way to add a column, specifying keys
+cookies_df['sweetness'] = { 'double chocolate': 10,
+                'oatmeal raisin': 7,
+                'snickerdoodle': 8,
+                'dirt': -1}
+print(cookies_df)
+
+# *** DATA SELECTION ***
+data = pd.Series(['a', 'c', 'e'], index=[1, 3, 5])
+
+# Indexing uses the explicit index
+print(data[3])
+
+# Slicing (getting multiple values) uses IMPLICIT index
+print(data[3:5]) # not getting expected output
+
+# Instead, use the LOC attribute to get a slice that uses explicit indices
+print(data.loc[3:5]) # includes item at index 5 too!
+
+# Not as common, iLOC uses implicit indices
+print(data.iloc[0:1]) # doesn't include second item
+
+
 
